@@ -1,8 +1,11 @@
 .app-header {
     background-color: var(--gray3);
     color: var(--clr1bg-light);
-    padding-block: 1em;
+    padding-block: 0.5em;
     font-family: DMreg ;
+    position: sticky;
+    top:0px;
+    z-index: 100;
 }
 
 .app-nav {
