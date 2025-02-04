@@ -10,7 +10,7 @@ export const carService = {
     getById,
     save,
     remove,
-    getEmptyCar,
+    getEmptyToy,
     getRandomCar,
     getDefaultFilter
 }
@@ -30,8 +30,8 @@ function query(filterBy = {}) {
         })
 }
 
-function getById(carId) {
-    return storageService.get(STORAGE_KEY, carId)
+function getById(toyId) {
+    return storageService.get(STORAGE_KEY, toyId)
 }
 
 function remove(carId) {
@@ -50,12 +50,16 @@ function save(car) {
     }
 }
 
-function getEmptyCar() {
+function getEmptyToy() {
     return {
-        vendor: '',
-        price: '',
-        speed: '',
-    }
+        _id: '',
+        name: '',
+        price:'',
+        minAge: '',
+        labels: ['Doll', 'Battery Powered', 'Baby'],
+        createdAt: Date.now(),
+        inStock: true,
+        }
 }
 
 function getRandomCar() {

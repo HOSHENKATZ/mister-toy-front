@@ -2,6 +2,7 @@
     background-color: var(--gray3);
     color: var(--clr1bg-light);
     padding-block: 1em;
+    font-family: DMreg ;
 }
 
 .app-nav {

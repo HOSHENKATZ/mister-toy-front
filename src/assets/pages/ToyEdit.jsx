@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { carService } from "../services/car.service.js"
+import { carService } from "../services/car.service.local.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { saveToy } from "../../store/actions/car.actions.js"
 import { Link, useNavigate, useParams } from "react-router-dom"
@@ -9,16 +9,17 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 
 export function ToyEdit() {
     const navigate = useNavigate()
-    const [toyToEdit, setToyToEdit] = useState(carService.getEmptyCar())
+    const [toyToEdit, setToyToEdit] = useState(carService.getEmptyToy())
     const { toyId } = useParams()
-
+console.log(toyId)
     // const isOnline = useOnlineStatus()
     // const setHasUnsavedChanges = useConfirmTabClose()
+
 
     useEffect(() => {
         if (toyId) loadToy()
     }, [])
-
+    console.log(toyToEdit)
     function loadToy() {
         carService.getById(toyId)
             .then(toy => setToyToEdit(toy))
@@ -77,9 +78,9 @@ export function ToyEdit() {
                         <button>{toyToEdit._id ? 'Save' : 'Add'}</button>
                         <Link to="/toy">Cancel</Link>
                     </div>
-                    <section>
+                    {/* <section>
                         <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>
-                    </section>
+                    </section> */}
                 </form>
             </section>
         </>

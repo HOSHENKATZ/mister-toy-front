@@ -45,8 +45,8 @@ export function removeToyOptimistic(toyId) {
 
 export function saveToy(toy) {
     const type = toy._id ? UPDATE_TOY : ADD_TOY
-    return carService.save(car)
-        .then(savedCar => {
+    return carService.save(toy)
+        .then(savedToy => {
             console.log('savedToy:', savedToy)
             store.dispatch({ type, toy: savedToy })
             return savedToy
