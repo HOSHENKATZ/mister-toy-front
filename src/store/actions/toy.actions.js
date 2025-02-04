@@ -1,14 +1,17 @@
-import { carService } from "../../assets/services/car.service.local.js";
+import { toyService } from "../../assets/services/toy.service.js";
 import { showSuccessMsg } from "../../assets/services/event-bus.service.js";
-import { ADD_TOY, TOY_UNDO, REMOVE_TOY, SET_TOYS, SET_FILTER_BY, SET_IS_LOADING, UPDATE_TOY } from "../reducers/toy.reducer.js";
+import { ADD_TOY, TOY_UNDO, REMOVE_TOY, SET_TOYS, SET_FILTER_BY, SET_IS_LOADING, UPDATE_TOY, SET_MAX_PAGE } from "../reducers/toy.reducer.js";
 import { store } from "../store.js";
 
 export function loadToys() {
-    const filterBy = store.getState().toyModule.filterBy
+    const { filterBy } = store.getState().toyModule
+
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-    return carService.query(filterBy)
-        .then(toys => {
+
+    return toyService.query(filterBy)
+        .then(({toys, maxPage })=> {
             store.dispatch({ type: SET_TOYS, toys })
+            store.dispatch({ type: SET_MAX_PAGE, maxPage })
         })
         .catch(err => {
             console.log('toys action -> Cannot load toys', err)
@@ -17,10 +20,11 @@ export function loadToys() {
         .finally(() => {
             store.dispatch({ type: SET_IS_LOADING, isLoading: false })
         })
+       
 }
 
 export function removeToy(toyId) {
-    return carService.remove(toyId)
+    return toyService.remove(toyId)
         .then(() => {
             store.dispatch({ type: REMOVE_TOY, toyId: toyId })
         })
@@ -32,7 +36,7 @@ export function removeToy(toyId) {
 
 export function removeToyOptimistic(toyId) {
     store.dispatch({ type: REMOVE_TOY, toyId })
-    return carService.remove(toyId)
+    return toyService.remove(toyId)
         .then(() => {
             showSuccessMsg('Removed Toy!')
         })
@@ -45,7 +49,7 @@ export function removeToyOptimistic(toyId) {
 
 export function saveToy(toy) {
     const type = toy._id ? UPDATE_TOY : ADD_TOY
-    return carService.save(toy)
+    return toyService.save(toy)
         .then(savedToy => {
             console.log('savedToy:', savedToy)
             store.dispatch({ type, toy: savedToy })

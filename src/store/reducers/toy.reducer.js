@@ -1,4 +1,4 @@
-import { carService } from "../../assets/services/car.service.js"
+import { toyService } from "../../assets/services/toy.service.js"
 
 //* toys
 export const SET_TOYS = 'SET_TOY'
@@ -15,21 +15,23 @@ export const CLEAR_CART = 'CLEAR_CART'
 
 export const SET_FILTER_BY = 'SET_FILTER_BY'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
+export const SET_MAX_PAGE = 'SET_MAX_PAGE'
 
 const initialState = {
     toys: [],
     isCartShown: false,
     shoppingCart: [],
     isLoading: false,
-    filterBy: carService.getDefaultFilter(),
-    lastToys: []
+    filterBy: toyService.getDefaultFilter(),
+    lastToys: [],
+    maxPage: 0,
 }
 
 export function toyReducer(state = initialState, action = {}) {
     switch (action.type) {
         //* Toys
         case SET_TOYS:
-            return { ...state, toys: action.toys }
+            return { ...state, toys: action.toys, lastToys: state.toys }
         case REMOVE_TOY:
             const lastToys = [...state.toys]
             return {
@@ -72,6 +74,9 @@ export function toyReducer(state = initialState, action = {}) {
                 ...state,
                 filterBy: { ...state.filterBy, ...action.filterBy }
             }
+
+        case SET_MAX_PAGE:
+            return { ...state, maxPage: action.maxPage }
 
         case SET_IS_LOADING:
             return {

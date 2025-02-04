@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 // import { ToyImg } from '../cmps/ToyImg'
 
 import { showErrorMsg } from '../services/event-bus.service'
-import { carService } from '../services/car.service.local.js'
+import { toyService } from '../services/toy.service.js'
 
 export function ToyDetails() {
   const [toy, setToy] = useState(null)
@@ -17,7 +17,7 @@ export function ToyDetails() {
   }, [toyId])
 
   function loadToy() {
-    carService.getById(toyId)
+    toyService.getById(toyId)
       .then(toy => setToy(toy))
       .catch(err => {
         console.log('Had issues in toy details', err)

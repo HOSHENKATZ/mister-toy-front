@@ -6,7 +6,7 @@ export function ToyPreview({ toy }) {
         <article className="toy-preview">
             <h4>{toy.name}</h4>
             <p>Price: <span>${toy.price.toLocaleString()}</span></p>
-            <p>min-age: {toy.minAge.toLocaleString()} years</p>
+            <p>min-age: {toy.minAge} years</p>
             <Link className="details" to={`/toy/${toy._id}`}>Details</Link>
 
         </article>

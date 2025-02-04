@@ -3,6 +3,8 @@ import { ToyPreview } from "./ToyPreview.jsx"
 
 export function ToyList({ toys, onRemoveToy, onEditToy, addToCart }) {
 console.log(toys)
+if (!toys) return <div>loading...</div>
+if (!toys.length) return <div>No toys to show</div>
     return (
         <ul className="toy-list">
             {toys.map(toy =>

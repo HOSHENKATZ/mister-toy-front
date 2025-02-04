@@ -14,10 +14,12 @@
     justify-content: space-around;
     background-color: var(--clr1);
     padding: 0.65em;
+    border-radius: 7px;
 }
 
 li .close-btn{
     position:absolute;
+    font-size: .6em;
     right:0px;
     top: 0px;
 }
