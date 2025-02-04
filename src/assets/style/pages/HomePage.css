@@ -1,0 +1,15 @@
+.home {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.img-container {
+    min-width: 100%;
+    justify-items: center;
+    place-items: center;
+}
+
+img {
+    width: 100%;
+  
+}
