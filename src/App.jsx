@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import './assets/style/main.css';
+import './assets/style/main.scss';
 import { BrowserRouter as Router, Route, Routes } from 'react-router'
 import { AppHeader } from './assets/cmps/AppHeader.jsx';
 import { AppFooter } from './assets/cmps/AppFooter.jsx';

@@ -1,0 +1,43 @@
+/* Setup */
+@import 'setup/vars.scss';
+@import 'setup/typography.scss';
+
+/* Base */
+@import 'base/base.scss';
+@import 'base/helpers.scss';
+@import 'base/layout.scss';
+@import 'base/forms.scss';
+
+/* Components */
+@import 'cmps/ToyIndex.scss';
+@import 'cmps/ToyEdit.scss';
+@import 'cmps/AppHeader.scss';
+@import 'cmps/AppFooter.scss';
+@import 'cmps/ToggleBtn.scss';
+@import 'cmps/UserMsg.scss';
+@import 'cmps/AccordionGroup.scss';
+@import 'cmps/Map.scss';
+
+
+@import 'cmps/ToyFilter.scss';
+@import 'cmps/ToyList.scss';
+@import 'cmps/ToyPreview.scss';
+
+@import 'cmps/ShoppingCart.scss';
+
+/* pages */
+@import './pages/HomePage.scss';
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.app > * {
+    width: 100%;
+}
+
+main {
+    flex-grow: 1;
+}
