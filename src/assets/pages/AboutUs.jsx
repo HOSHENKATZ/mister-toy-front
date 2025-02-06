@@ -1,4 +1,5 @@
  import { AccordionGroup, AccordionItem } from "../cmps/AccodionGroup.jsx";
+import { Map } from "../cmps/Map.jsx";
 
 export function AboutUs() {
     return (
@@ -21,6 +22,8 @@ export function AboutUs() {
                     <p>Hard working and willing to learn and improve!</p>
                 </AccordionItem>
             </AccordionGroup>
+
+            <Map/>
         </section>
     )
 }

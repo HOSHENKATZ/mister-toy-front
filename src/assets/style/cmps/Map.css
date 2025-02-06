@@ -1,0 +1,10 @@
+.map{
+    margin-top: 20px;
+    border-top: 1px solid var(--gray1);
+}
+
+.map .btn{
+    max-width: 200px;
+    align-self: center;
+    border: none;
+}

@@ -1,3 +1,11 @@
 .add-btn {
     margin: 0.6em ;
 }
+.chart-container{
+    max-width: 400px;
+    justify-self: center;
+    margin-bottom: 20px;
+}
+.chart-title{
+    font-size: 2rem;
+}

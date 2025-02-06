@@ -13,18 +13,24 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { PaginationButtons } from '../cmps/PaginationButtons.jsx'
+import React from 'react';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 export function ToyIndex() {
 
-    
+
     const toys = useSelector(storeState => storeState.toyModule.toys)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const maxPage = useSelector(storeState => storeState.toyModule.maxPage)
+
     // console.log('cars:', cars)
     const navigate = useNavigate()
     useEffect(() => {
         loadToys()
-        .then(()=> res.toys)
+            .then(() => res.toys)
             .catch(err => {
                 showErrorMsg('Cannot load toys!')
             })
@@ -74,7 +80,7 @@ export function ToyIndex() {
         if (newPageIdx < 0) newPageIdx = maxPage - 1
         if (newPageIdx >= maxPage) newPageIdx = 0
         onSetFilter({ pageIdx: newPageIdx })
-      }
+    }
 
     function addToCart(toy) {
         console.log(`Adding ${toy.name} to Cart`)
@@ -99,11 +105,50 @@ export function ToyIndex() {
                 }
                 <hr />
                 <PaginationButtons
-          pageIdx={filterBy.pageIdx}
-          onChangePageIdx={onChangePageIdx}
-        />
+                    pageIdx={filterBy.pageIdx}
+                    onChangePageIdx={onChangePageIdx}
+                />
+
+
+                <article className='chart-container'>
+                    <h5 className='chart-title'>Our products by age:</h5>
+                    <Doughnut data={data} />
+                </article>
             </main>
         </div>
     )
 }
 
+
+
+
+export const data = {
+    labels: ['2 years', '3 years', '4 years', '5 years', '6 years', '7 years', '8 years', '9 years'],
+    datasets: [
+        {
+            label: '# of Votes',
+            data: [3, 6, 4, 3, 1, 1, 1, 0],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.7)',
+                'rgba(54, 162, 235, 0.7)',
+                'rgba(255, 206, 86, 0.7)',
+                'rgba(75, 192, 192, 0.7)',
+                'rgba(153, 102, 255, 0.7)',
+                'rgba(255, 159, 64, 0.7)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+            ],
+            borderWidth: 0,
+        },
+    ],
+};
+
+export function App() {
+    return <Doughnut data={data} />;
+}
