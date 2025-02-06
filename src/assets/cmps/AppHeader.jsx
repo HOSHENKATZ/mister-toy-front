@@ -39,7 +39,8 @@ export function AppHeader() {
                 <nav className="app-nav">
                     <NavLink to="/" >Home</NavLink>
                     <NavLink to="/about" >About</NavLink>
-                    <NavLink to="/toy" >toys</NavLink>
+                    <NavLink to="/toy" >Toys</NavLink>
+                    <NavLink to="/dash" >Dash-Board</NavLink>
                     <a href="#">🛒 Cart</a>
 
                 </nav>

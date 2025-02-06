@@ -14,9 +14,7 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { PaginationButtons } from '../cmps/PaginationButtons.jsx'
 import React from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-ChartJS.register(ArcElement, Tooltip, Legend);
+
 
 export function ToyIndex() {
 
@@ -110,10 +108,7 @@ export function ToyIndex() {
                 />
 
 
-                <article className='chart-container'>
-                    <h5 className='chart-title'>Our products by age:</h5>
-                    <Doughnut data={data} />
-                </article>
+               
             </main>
         </div>
     )
