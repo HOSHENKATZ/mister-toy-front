@@ -1,6 +1,7 @@
 /* Setup */
 @import 'setup/vars.scss';
 @import 'setup/typography.scss';
+@import 'setup/mq-variables.scss';
 
 /* Base */
 @import 'base/base.scss';
@@ -27,6 +28,8 @@
 
 /* pages */
 @import './pages/HomePage.scss';
+
+
 .app {
     display: flex;
     flex-direction: column;

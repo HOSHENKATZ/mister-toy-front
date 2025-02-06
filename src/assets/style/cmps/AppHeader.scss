@@ -2,13 +2,69 @@
     background-color: var(--gray3);
     color: var(--clr1bg-light);
     padding-block: 0.5em;
-    font-family: DMreg ;
+    font-family: DMreg;
     position: sticky;
-    top:0px;
+    top: 0px;
     z-index: 100;
-}
 
-.app-nav {
-    display: flex;
-    gap: 15px;
+    .logo {
+        font-size: 2em;
+    }
+
+    // background-color: brown;
+    @include for-mobile-layout {
+        .header-container {
+            .btn-toggle-menu {
+                cursor: pointer;
+                display: block;
+                width: 30px;
+                justify-self: end;
+            }
+
+            .app-nav {
+                position: fixed;
+                top: 80px;
+                background: var(--gray3);
+                left: 0;
+                width: 100%;
+                display: grid;
+                grid-template-rows: 0fr;
+                overflow: hidden;
+                transition: grid-template-rows 1s;
+                align-items: end;
+                align-content: end;
+            }
+
+            .app-nav a {
+                display: grid;
+                place-items: center;
+                width: 100%;
+                color: inherit;
+                text-decoration: none;
+                color: white;
+                transition: border-bottom 0.2s;
+            }
+            .app-nav>a {
+                border-bottom: 1px solid rgb(106, 106, 106);
+            }
+
+        }
+        .app-header.menu-open .app-nav {
+            grid-template-rows: 1fr;
+        }
+    }
+
+    @include for-normal-layout {
+
+        .app-nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-toggle-menu {
+
+            display: none;
+
+        }
+    }
 }

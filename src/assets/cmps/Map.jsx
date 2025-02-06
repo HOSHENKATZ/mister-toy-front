@@ -5,7 +5,7 @@ import GoogleMapReact from 'google-map-react'
 function Marker() {
   return (
     <div className="branch-img">
-     📌
+      📌
     </div>
   )
 }
@@ -51,22 +51,22 @@ export function Map() {
     <div className='map'>
       <h2>Our locations</h2>
       <div className='flex flex-column'>
-      {branches.map(branch => {
-        return (
-          <button className='btn'
-            key={branch.id}
-            onClick={() => {
-              setCoordinates(branch.position)
-              setZoom(12)
-            }}
-          >
-            {branch.city}
-          </button>
-        )
-      })}
+        {branches.map(branch => {
+          return (
+            <button className='btn'
+              key={branch.id}
+              onClick={() => {
+                setCoordinates(branch.position)
+                setZoom(12)
+              }}
+            >
+              {branch.city}
+            </button>
+          )
+        })}
       </div>
       {/* // Important! Always set the container height explicitly */}
-      <div className="map" style={{ height: '60vh', width: '100%' }}>
+      <div className="map" style={{ height: '60vh', width: '70%', margin: 'auto' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: API_KEY }}
           center={coordinates}
