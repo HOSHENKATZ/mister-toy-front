@@ -7,16 +7,17 @@ import { utilService } from "../services/util.service.js"
 export function ToyFilter({ filterBy, onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-    onSetFilter = useRef(utilService.debounce(onSetFilter, 300))
+    const filterDebounce = useRef(utilService.debounce(onSetFilter, 300))
 
     useEffect(() => {
-        onSetFilter.current(filterByToEdit)
+        filterDebounce.current(filterByToEdit)
     }, [filterByToEdit])
 
     function handleChange({ target }) {
         let { value, name: field, type } = target
         value = type === 'number' ? +value : value
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
+       
     }
 
     return (
@@ -25,10 +26,10 @@ export function ToyFilter({ filterBy, onSetFilter }) {
             <form >
                 <label htmlFor="toy-name">Name:</label>
                 <input type="text"
-                    id="toy-name"
-                    name="toy-name"
+                    id="toyName"
+                    name="toyName"
                     placeholder="By name"
-                    value={filterByToEdit.txt}
+                    value={filterByToEdit.toyName}
                     onChange={handleChange}
                 />
 
@@ -43,8 +44,8 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
                 <label htmlFor="min-age">Min age:</label>
                 <input type="number"
-                    id="min-age"
-                    name="min-age"
+                    id="minAge"
+                    name="minAge"
                     placeholder="By min age"
                     value={filterByToEdit.minAge || ''}
                     onChange={handleChange}

@@ -4,14 +4,16 @@ import { ADD_TOY, TOY_UNDO, REMOVE_TOY, SET_TOYS, SET_FILTER_BY, SET_IS_LOADING,
 import { store } from "../store.js";
 
 export function loadToys() {
+    console.log('hey')
     const { filterBy } = store.getState().toyModule
 
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
 
     return toyService.query(filterBy)
-        .then(({toys, maxPage })=> {
+        .then((toys)=> {
+           
             store.dispatch({ type: SET_TOYS, toys })
-            store.dispatch({ type: SET_MAX_PAGE, maxPage })
+            // store.dispatch({ type: SET_MAX_PAGE, maxPage })
         })
         .catch(err => {
             console.log('toys action -> Cannot load toys', err)

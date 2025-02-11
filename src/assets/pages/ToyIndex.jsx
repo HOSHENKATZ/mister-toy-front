@@ -21,9 +21,10 @@ export function ToyIndex() {
 
     const toys = useSelector(storeState => storeState.toyModule.toys)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
+    
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const maxPage = useSelector(storeState => storeState.toyModule.maxPage)
-
+   
     // console.log('cars:', cars)
     const navigate = useNavigate()
     useEffect(() => {
@@ -35,8 +36,8 @@ export function ToyIndex() {
     }, [filterBy])
 
     function onSetFilter(filterBy) {
-        setFilterBy(filterBy)
         console.log(filterBy)
+        setFilterBy(filterBy)
     }
 
     function onRemoveToy(toyId) {
@@ -85,7 +86,7 @@ export function ToyIndex() {
         dispatch({ type: ADD_TOY_TO_CART, toy })
         showSuccessMsg('Added to Cart')
     }
-    console.log(toys.toys)
+
     return (
         <div>
             <main>
@@ -108,7 +109,7 @@ export function ToyIndex() {
                 />
 
 
-               
+
             </main>
         </div>
     )

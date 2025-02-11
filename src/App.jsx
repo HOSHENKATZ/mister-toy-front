@@ -10,6 +10,8 @@ import { store } from './store/store.js';
 import { ToyEdit } from './assets/pages/ToyEdit.jsx'
 import { ToyDetails } from './assets/pages/ToyDetails.jsx';
 import {DashBoard} from './assets/pages/DashBoard.jsx'
+import { ReviewIndex } from './assets/pages/ReviewIndex.jsx';
+import { LoginSignup } from './assets/cmps/LoginSignup.jsx';
 export function App() {
 
   return (
@@ -25,7 +27,9 @@ export function App() {
               <Route element={<ToyIndex />} path="/toy" />
               <Route element={<ToyDetails />} path="/toy/:toyId" />
               <Route element={<ToyEdit />} path="/toy/edit/:toyId?" />
+              <Route element={<ReviewIndex />} path="/review" />
               <Route element={<DashBoard />} path="/dash" />
+              <Route element={<LoginSignup />} path="/Sign" />
             </Routes>
           </main>
           <AppFooter />

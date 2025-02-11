@@ -29,7 +29,7 @@ export function ToyDetails() {
   if (!toy) return <div>loading...</div>
 
   return (
-    <section className="toy-details">
+    <section className="toy-details preview">
       {/* <ToyImg toyName={toy.name} /> */}
       <p>
         Toy name: <span>{toy.name}</span>

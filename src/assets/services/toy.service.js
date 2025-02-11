@@ -24,6 +24,7 @@ export const toyService = {
 }
 
 function query(filterBy = {}) {
+ 
   return httpService.get(BASE_URL, filterBy)
 }
 
@@ -42,10 +43,12 @@ function save(toy) {
 
 function getDefaultFilter() {
   return {
-    txt: '',
+    toyName: '',
     inStock: null,
-    labels: [],
+    minAge: '',
+    maxPrice:'',
     pageIdx: 0,
+    isReviews: '',
     sortBy: { type: '', sortDir: 1 },
   }
 }
