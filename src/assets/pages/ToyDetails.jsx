@@ -6,6 +6,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { showErrorMsg } from '../services/event-bus.service'
 import { toyService } from '../services/toy.service.js'
+import { Chat } from '../cmps/Chat.jsx'
 
 export function ToyDetails() {
   const [toy, setToy] = useState(null)
@@ -29,6 +30,7 @@ export function ToyDetails() {
   if (!toy) return <div>loading...</div>
 
   return (
+    <>
     <section className="toy-details preview">
       {/* <ToyImg toyName={toy.name} /> */}
       <p>
@@ -45,7 +47,10 @@ export function ToyDetails() {
       </p>
       <button>
         <Link to="/toy">Back</Link>
+
       </button>
     </section>
+    <Chat toy={toy}/>
+    </>
   )
 }

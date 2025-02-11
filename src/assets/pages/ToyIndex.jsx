@@ -103,10 +103,10 @@ export function ToyIndex() {
                     : <div>Loading...</div>
                 }
                 <hr />
-                <PaginationButtons
+                {/* <PaginationButtons
                     pageIdx={filterBy.pageIdx}
                     onChangePageIdx={onChangePageIdx}
-                />
+                /> */}
 
 
 
